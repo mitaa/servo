@@ -85,13 +85,7 @@ def parse_whitelist_file(filename):
         return [item for i, item in enumerate(errors) if not whitelisted[i]]
     return inner
 
-_whitelist_fn = None
-def whitelist_errors(path, errors):
-    global _whitelist_fn
-
-    if _whitelist_fn is None:
-        _whitelist_fn = parse_whitelist_file(os.path.join(repo_root, "lint.whitelist"))
-    return _whitelist_fn(path, errors)
+whitelist_errors = parse_whitelist_file(os.path.join(repo_root, "lint.whitelist"))
 
 class Regexp(object):
     pattern = None
