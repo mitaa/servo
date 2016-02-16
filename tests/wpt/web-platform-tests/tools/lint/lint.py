@@ -70,7 +70,7 @@ def parse_whitelist_file(filename):
             data[file_match][error_type].add(line_number)
 
     def inner(path, errors):
-        whitelisted = [False for item in xrange(len(errors))]
+        whitelisted = [False] * len(errors)
 
         for file_match, whitelist_errors in data.iteritems():
             if fnmatch.fnmatch(path, file_match):
